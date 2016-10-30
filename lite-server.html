@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/blog-styles.css">
+</head>
+<body>
+
+<div class="text">
+    Lite Server is a NPM plugin that is continuously running an HTML file. It's very convenient when working on a HTML/CSS code.
+    To take advantage of lite-server do the following:
+    <ul>
+        <li> Make sure npm is set up:
+            <div class="cmdline ">
+$ npm init
+            </div>
+        </li>
+
+        <li>
+            Install lite-server:
+            <div class="cmdline">
+                $ npm install lite-server --save-dev
+            </div>
+        </li>
+
+        <li>
+            In package.json file, in the script section, tell npm to start lite-server:
+            <div class="cmdline">
+                <pre><code>
+                ...
+                "scripts": {
+                "test": "echo \"Error: no test specified\" && exit 1",
+                "start" : "lite-server"
+                },
+                ...
+                </code></pre>
+            </div>
+
+        </li>
+
+        <li>
+            Run lite-server by running:
+            <div class="cmdline">
+                $ npm start
+            </div>
+            This will run lite-server in the background using localhost, and every time index.html is changed it will be automatically refreshed.
+        </li>
+
+    </ul>
+</div>
+
+</body>
+</html>

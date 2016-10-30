@@ -1,0 +1,22 @@
+.code {
+    font-size: x-small;
+    background-color: #134f5c;
+    color: LightYellow;
+}
+
+.text {
+    font-family: "helvetica neue", "helvetica", "arial", sans-serif;
+}
+
+.cmdline {
+    font-family: Courier New, Courier, monospace;
+    padding: 2px;
+    margin: 4px;
+    background-color: DarkOliveGreen;
+    color: LightYellow;
+}
+
+.text li {
+    margin-top: 16px;
+}
+

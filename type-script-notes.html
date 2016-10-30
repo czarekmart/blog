@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Type Script Notes</title>
+    <link rel="stylesheet" href="css/blog-styles.css">
+</head>
+<body>
+
+<div class="text">
+    <ol>
+        <li>
+            TypeScript compiles to JS
+        </li>
+        <li>
+            Web Site:&nbsp;<a href="http://www.typescriptlang.org/">www.typescriptlang.org</a>
+        </li>
+
+        <li>Installation:
+            <div class="cmdline">
+                npm install typescript -g
+            </div>
+        </li>
+
+        <li>
+            Create a .ts file, for example: sample.ts
+        </li>
+
+
+        <li>
+            Compile:
+            <div class="cmdline">
+                tsc sample.ts
+            </div>
+            This will create a file: sample.js
+        </li>
+
+        <li>
+            To automate the process, type:
+            <div class="cmdline">
+                $ tsc --init
+            </div>
+            This will create tsconfig.json file, which configures the way tsc runs.
+            This allows to run just:
+            <div class="cmdline">
+                $ tsc
+            </div>
+        </li>
+
+    </ol>
+</div>
+
+
+</body>
+</html>
