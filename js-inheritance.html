@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/blog-styles.css">
+</head>
+<body>
+
+<p class="text">
+
+    Pseudo-classical (construction) inheritance pattern in JavaScript
+
+</p>
+
+<div class="code">
+    <pre><code>
+
+// Define the base object
+function Person(first_name, last_name) {
+    this.first_name = first_name;
+    this.last_name = last_name;
+}
+
+// Add methods to the base prototype.
+// DO NOT add them to the Person object.
+Person.prototype.full_name = function() {
+    return this.first_name + ' ' + this.last_name;
+}
+
+// Define the inherited object
+function Professional(honorific, first_name, last_name) {
+    Person.call(this, first_name, last_name);
+    this.honorific = honorific;
+}
+
+// Define the inheritance
+Professional.prototype = Object.create(Person.prototype);
+
+// Add methods to the inherited object's prototype
+Professional.prototype.professional_name = function() {
+    return this.honorific + " " + this.full_name();
+}
+
+var x = new Professional("Dr", "Albert", "Einstein");
+console.log(x.professional_name()); // Dr Albert Einstein
+
+    </code></pre>
+
+</div>
+
+<p class="text">
+    Prototypal inheritance (native to JavaScript)
+</p>
+
+<div class="code">
+    <pre><code>
+
+
+//----------------------------------------
+// Prototypal inheritance (native to JS)
+//----------------------------------------
+
+// The point is to separate behavior (methods) from data (instance).
+// The behavior is represented by prototypes:
+// - base prototype: Person
+// - derived prototype: Professional
+// The Person and Professional object must stay singletons,
+// and they are assigned as prototypes to each allocated instance.
+
+// In this pattern there is basically no inheritance in the classical sense,
+// but there is only building a chain of prototypes.
+
+var PersonProto = {
+    initPerson: function (first_name, last_name) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        return this;
+    },
+    full_name: function () {
+        return this.first_name + " " + this.last_name;
+    }
+};
+
+// Person instances are created via PersonFactory
+
+var PersonFactory = function (first_name, last_name) {
+    var person = Object.create(PersonProto).initPerson(first_name, last_name);
+    return person;
+}
+
+var x = PersonFactory("Albert", "Einstein");
+console.log(x.full_name()); // Albert Einstein
+
+
+var ProfessionalProto = Object.create(PersonProto, {
+    professional_name: {
+        value: function () {
+            return this.honorific + ". " + this.full_name();
+        }
+    },
+    initProfessional: {
+        value: function (honorific, first_name, last_name) {
+            this.initPerson(first_name, last_name);
+            this.honorific = honorific;
+            return this;
+        }
+    }
+});
+
+// Professional instances are created via ProfessionalFactory
+
+var ProfessionalFactory = function (honorific, first_name, last_name) {
+    var prof = Object.create(ProfessionalProto).initProfessional(honorific, first_name, last_name);
+    return prof;
+}
+
+var x1 = ProfessionalFactory("Sir", "Isaac", "Newton");
+console.log(x1.professional_name());  // Sir. Isaac Newton
+
+
+    </code></pre>
+</div>
+
+<p class="text">
+This pattern can be further enhanced by creating a singleton factory pattern,
+where the PersonProto and ProfessionalProto objects are not exposed to public,
+but are hidden inside the factory body as closures
+</p>
+
+</body>
+</html>
