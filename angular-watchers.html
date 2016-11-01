@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular Watchers</title>
+    <link rel="stylesheet" href="css/blog-styles.css">
+</head>
+<body>
+
+<div class="text">
+
+    Watchers
+    <ul>
+        <li>Angular objects that are constantly watching for changes in the app angular-conforming variables.</li>
+        <li>Watchers watch changes to keep angular binding in sync</li>
+    </ul>
+
+    Digest Loop
+    <ul>
+        <li>The digest cycle loops that allows watchers to do their watch.</li>
+    </ul>
+
+    Example
+    <div class="code">
+        <pre><code>
+
+$scope.myVariable;
+$scope.$watch('myVariable', function(newValue, oldValue) {
+    // Do something with the chagne
+} );
+
+//Example:
+
+// This change is not watched, because it's inside timer, which
+// is not watched by the watchers
+
+setTimeout(function() {
+    // This change is not watched!
+    $scope.myVariable = 1;
+}, 3000);
+
+// To fix it, the following must be done:
+
+setTimeout(function() {
+    $scope.$apply(function() {
+        $scope.myVariable = 1;	// this is watched!
+    });
+}, 3000);
+
+// Another solution to this is using $timeout
+//-- Remember to inject it!
+$timeout(function() {
+    $scope.myVariable = 1;
+}, 3000);
+
+        </code></pre>
+    </div>
+
+
+
+</div>
+
+</body>
+</html>
