@@ -1,0 +1,14 @@
+1. Install karma globally (if not previously installed)
+    npm install karma-cli -g   (if not previously installed)
+
+2. Install all necessary packages:
+    npm install jasmine-core --save-dev
+    npm install karma-jasmine --save-dev
+    npm install phantomjs karma-phantomjs-launcher karma-chrome-launcher --save-dev
+
+3. Install testem globaly (if not previously installed):
+    npm install testem -g
+
+4. Configure environment in testem.json
+
+5. Run: testem
