@@ -6,3 +6,6 @@ node_modules/
 # Directory-based project format:
 *.log
 .idea
+*.map
+ts/*.js
+

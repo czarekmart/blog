@@ -18,7 +18,7 @@ enum Color {
 };
 
 let myCatColor: Color = Color.Red;
-alert(myCatColor);
+console.log("myCatColor = ", myCatColor);
 
 // typed functions
 // not typed (JavaScript)
@@ -71,4 +71,91 @@ myAge = "58";
 type AgeType = number | string;
 let mamaAge: AgeType = 77;
 
+// Example of type definition
+// Define types
+type BankAccount = {
+    money: number,
+    deposit: (number)=>void
+};
+type Person = {
+    name: string,
+    bankAccount: BankAccount,
+    hobbies: string[]
+};
 
+// Instantiate the types
+let myBankAccount: BankAccount = {
+    money: 2000,
+    deposit: function (value: number) {
+        this.money += value;
+    }
+};
+
+let me : Person = {
+    name: "Cezar",
+    bankAccount: myBankAccount,
+    hobbies: ["Ski", "Coding"]
+};
+
+//----------------------
+// Constants
+//----------------------
+const maxLevels = 100;  // create immutable variable
+
+//----------------------
+// Arrow functions
+//----------------------
+let increaser = (n:number) => (n+1);
+let comparer = (a:number, b:number) => {
+    if(a==b) {
+        return 0;
+    }
+    else if(a < b) {
+        return -1;
+    }
+    else {
+        return 1;
+    }
+};
+console.log("increaser(5)="+increaser(5));
+
+let greeter = (name:string) => {
+    console.log("Hello " + name)
+};
+console.log(greeter("cezar"));
+
+// Shorter way of arrow function
+let greeter1 = name => console.log("Hello again " + name);
+console.log(greeter1("Bob"));
+
+//---------------------------
+// Spread/rest operator
+//---------------------------
+let numbers = [1,10,99,-5];
+console.log(Math.max(33, 55, 9, -4));   // should be 55
+console.log(Math.max(...numbers));  // translates to apply in JS
+
+// Similar with Rest operator
+function makeArray(...args: number[]) {
+    return args;
+}
+
+console.log(makeArray(4, 6, 22));   // returns [4, 6, 22]
+
+// Destucturing arrays or types
+let myHobbies = ["skis", "soccer"];
+let [hobby1, hobby2] = myHobbies;
+console.log(hobby1, hobby2);
+
+let hisData = {name:"Marcus", age:5};
+let {name:hisName, age: hisAge} = hisData;
+console.log(hisName, hisAge);
+
+//------------------------------
+// Template literals
+//------------------------------
+const userName = "Max";
+let greeting = ` This is first line!
+I'm ${userName},
+All is fine!`;
+console.log(greeting);
