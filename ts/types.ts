@@ -10,6 +10,10 @@ let address = ["My Street", 88];
 // tuples (array of mixed, but defined, types)
 let address1: [string, number] = ["Cherry Lane", 11];
 
+// Constants
+const maxLevels = 100;  // create immutable variable
+
+
 //---------------------------------
 // enums
 //---------------------------------
@@ -124,11 +128,6 @@ let me : Person = {
     bankAccount: myBankAccount,
     hobbies: ["Ski", "Coding"]
 };
-
-//----------------------
-// Constants
-//----------------------
-const maxLevels = 100;  // create immutable variable
 
 //----------------------
 // Arrow functions
