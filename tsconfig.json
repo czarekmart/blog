@@ -3,11 +3,12 @@
         "module": "commonjs",
         "target": "es5",
         "noImplicitAny": false,
-        "sourceMap": true,
-        "noEmitOnError": true
+        "sourceMap": true
     },
     "exclude": [
-        "node_modules",
-        "app.ts"
+        "node_modules"
+    ],
+    "files": [
+        "ts/use-math"
     ]
 }
