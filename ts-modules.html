@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/blog-styles.css">
+</head>
+<body>
+
+<!--**********************************************************-->
+<p class="text">
+    Install module loader for TypeScript (SystemJS)
+</p>
+
+<div class="cmdline">
+$ npm install systemjs --save
+</div>
+
+<!--**********************************************************-->
+<p class="text">
+    Add reference to systemJS in the HTML file in the scripts section
+</p>
+
+<div class="code">
+    <pre><code>
+&lt;script src="./node_modules/systemjs/dist/system.js"&gt;&lt;/script&gt;
+        </code></pre>
+</div>
+
+<p class="text">
+    Add another script below in the HTML file:
+</p>
+
+<div class="code">
+    <pre><code>
+&lt;script&gt;
+    SystemJS.config({
+        baseURL: './',
+        defaultJSExtensions: true
+    });
+    SystemJS.import('app.js');
+&lt;/script&gt;
+    </code></pre>
+</div>
+
+
+<!--**********************************************************-->
+<p class="text">
+    Implement the module:
+</p>
+
+<div class="code">
+    <pre><code>
+export const PI = 3.14;
+export function calculateCircleArea(diameter: number) {
+    return diameter*diameter*PI/4;
+}
+    </code></pre>
+</div>
+
+<!--**********************************************************-->
+<p class="text">
+    Import the module into the app:
+</p>
+
+<div class="code">
+    <pre><code>
+import { PI, calculateCircleArea } from "./ts/mathModule";
+
+console.log(PI);
+console.log(calculateCircleArea(10));
+    </code></pre>
+</div>
+
+<!--**********************************************************-->
+<p class="text">
+    Transpile (compile):
+</p>
+
+<div class="cmdline">
+    $ tsc
+</div>
+
+<!--**********************************************************-->
+<p class="text">
+    Another form of importing via alias:
+</p>
+
+<div class="code">
+    <pre><code>
+import * as Calcs from "./ts/mathModule";
+
+console.log(Calcs.PI);
+console.log(Calcs.calculateCircleArea(10));
+    </code></pre>
+</div>
+
+</body>
+</html>

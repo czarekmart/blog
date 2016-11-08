@@ -11,6 +11,14 @@
 <h3>Hello</h3>
 
 
-<script src="ts/math.js"></script>
+<script src="./node_modules/systemjs/dist/system.js"></script>
+<script>
+    SystemJS.config({
+        baseURL: './',
+        defaultJSExtensions: true
+    });
+    SystemJS.import('app.js');
+</script>
+
 </body>
 </html>
