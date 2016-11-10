@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Declaration Files for JS</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 </head>
 <body>
 
-<h3>Hello</h3>
+<h3 id="play1">Hello</h3>
 
 
 <script src="./node_modules/systemjs/dist/system.js"></script>
 <script>
     SystemJS.config({
+        map: {
+            "jQuery" : "node_modules/jquery/dist/jquery.min.js"
+        },
         baseURL: './',
         defaultJSExtensions: true
     });
